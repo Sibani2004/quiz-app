@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="A fun and interactive quiz app for solving quizzes.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Solving Quiz App</title>
+</head>
+<body>
+  <div class="registration-screen" id="registration-screen">
+    <h2>Register</h2>
+    <label for="reg-username">Username</label>
+    <input type="text" id="reg-username" placeholder="Enter a username" required>
+    <label for="reg-password">Password</label>
+    <input type="password" id="reg-password" placeholder="Enter a password" required>
+    <label for="reg-email">Email</label>
+    <input type="email" id="reg-email" placeholder="Enter your email" required>
+    <button id="register-button">Register</button>
+    <p>Already have an account? <a href="#" id="go-to-login">Login here</a></p>
+  </div>
+  
+  <div class="login-screen hide" id="login-screen">
+    <h2>Login</h2>
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password" required>
+    <button id="login-button">Login</button>
+    <p>Don't have an account? <a href="#" id="go-to-register">Register here</a></p>
+  </div>
+  
+  <div class="category-screen hide" id="category-screen">
+    <h2>Select a Category, <span id="user-name"></span>!</h2>
+    <button class="category-button" data-category="general">General Knowledge</button>
+    <button class="category-button" data-category="history">History</button>
+    <button class="category-button" data-category="math">Mathematics</button>
+    <button class="category-button" data-category="science">Science</button>
+  </div>
+  
+  <div class="start-screen hide" id="start-screen">
+    <h2>Quiz Rules:</h2>
+    <ul class="quiz-rules">
+      <li>You'll be able to see whether each answer is correct or not after the time runs out.</li>
+      <li>After completing the quiz, you'll receive a list showing all your answers, indicating which were correct, incorrect, or not attempted.</li>
+      <li>At the end, correct answers will be displayed in Green (<i class="fa-solid fa-circle" style="color: #abf7b1;"></i>), incorrect answers in Red (<i class="fa-solid fa-circle" style="color: #ee6b6e;"></i>), and not attempted questions in Yellow (<i class="fa-solid fa-circle" style="color: #f0e68c;"></i>).</li>
+      <li>You can't select any option once the time runs out.</li>
+      <li>You can't exit the quiz while you're playing.</li>
+      <li>You will earn points based on your correct answers.</li>
+    </ul>
+    <button id="start-button">Start Quiz</button>
+  </div>
+  
+  <div id="display-container" class="hide">
+    <div class="header">
+      <div class="number-of-count">
+        <span class="number-of-question" id="question-count">1 of 30 questions</span>
+      </div>
+      <div class="timer-div">
+        <!-- <img src="https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/stopwatch-icon.png" width="20px" alt="Timer Icon"/> -->
+        <i class="fa-solid fa-stopwatch fa-shake fa-lg" style="color: #000000;" ></i>  
+        <span class="time-left" id="time-left">10s</span>
+      </div>
+    </div>
+    <div id="container">
+      <h3 id="question-title"></h3>
+      <div class="options">
+        <button class="option" id="option1"></button>
+        <button class="option" id="option2"></button>
+        <button class="option" id="option3"></button>
+        <button class="option" id="option4"></button>
+      </div>
+    </div>
+    <button id="next-button" class="hide">Next</button>
+  </div>
+  
+  <div class="score-container hide" id="score-container">
+    <div id="user-score">Demo Score</div>
+    <div id="result-container" class="result-container"></div> <!-- New result container -->
+    <button id="restart">Restart</button>
+</div>
+
+
+  <!-- Review Container -->
+  <div class="review-container hide" id="review-container">
+    <h2>Quiz Review</h2>
+    <div id="review-questions"></div>
+    <div id="final-score"></div>
+    <button id="restart-final">Restart</button>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
