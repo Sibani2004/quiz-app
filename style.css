@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Indie+Flower&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Exo 2", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-color: #D2E2C8;
+  background-position: center;
+  background-size: cover;
+  background: url("./pqrs.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration-screen, .login-screen, .category-screen, .start-screen, .score-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registration-screen h2, .login-screen h2, .category-screen h2, .start-screen h2 {
+  margin-bottom: 1.5em;
+  margin-top: 3em;
+  font-size: 2.5em;
+  color: black;
+}
+
+input, button {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.8em;
+  margin-bottom: 1.2em;
+  border-radius: 0.5em;
+  border: 1px solid #c0bfd2;
+  font-size: 1em;
+}
+
+button {
+  background-color: seagreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #1da4a2;
+}
+
+button:active {
+  background-color: #3a6a3a;
+}
+
+input:focus {
+  border-color: white;
+  outline: none;
+}
+
+.hide {
+  display: none;
+}
+
+.category-button {
+  background-color: seagreen;
+  color: white;
+  font-size: 1.2em;
+  padding: 1em;
+  margin: 0.5em;
+  width: 80%;
+  max-width: 300px;
+}
+
+.start-screen .quiz-rules {
+  margin-bottom: 1.5em;
+  padding-left: 3em;
+  text-align: left;
+  max-width: 700px;
+  font-size: 1em;
+  color: #333333;
+}
+
+.start-screen .quiz-rules li {
+  margin-bottom: 0.8em;
+}
+
+#display-container {
+  background-color: white;
+  padding: 2em;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 1em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+}
+
+.quiz-rules li {
+  color: #bf0000;
+  font-size: larger;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.number-of-count {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.timer-div {
+  background-color: #e1f5fe;
+  padding: 0.5em 1.2em;
+  border-radius: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1em;
+  color: #000;
+}
+
+.timer-div img {
+  margin-right: 0.5em;
+}
+
+#question-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 1.2em;
+  color: black;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  font-size: 1em;
+  padding: 1em;
+  margin-bottom: 0.8em;
+  background-color: black;
+  border: 1px solid #c0bfd2;
+  border-radius: 0.5em;
+  cursor: pointer;
+  text-align: left;
+  color: white; /* Ensure the text color is white for selected options */
+}
+
+.option.disabled {
+  color: #999999;
+  cursor: not-allowed;
+}
+
+/* Correct option styling */
+.option.correct {
+  background-color: #abf7b1;   /* Green background for correct answer */
+  border-color: #689f38;       /* Dark green border */
+  color: black;                /* Ensure the text of the correct answer is black */
+}
+
+/* Incorrect option styling */
+.option.incorrect {
+  background-color: #ee6b6e;   /* Red background for incorrect answer */
+  border-color: #d32f2f;       /* Dark red border */
+  color: black;                /* Text color for incorrect option should be black */
+}
+
+/* Remove blue color after selection */
+.option.selected {
+  background-color: #1da4a2;   /* Background stays seagreen after selection */
+  color: white;                /* Text remains white for selected options */
+}
+
+/* Add focus style for better accessibility */
+button:focus {
+  outline: 3px solid #0077cc;
+}
+
+.results-section {
+  display: none;
+  margin-top: 20px;
+}
+
+.result-box {
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.correct {
+  border-left: 5px solid green;
+}
+
+.incorrect {
+  border-left: 5px solid red;
+}
+
+.skipped {
+  border-left: 5px solid yellow;
+}
+
+
+#result-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#result-boxes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.result-box {
+  /* width: 30%; */
+  min-width: 120px;
+  text-align:left;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s;
+}
+
+.result-box:hover {
+  transform: scale(1.05);
+}
+
+.correct-box {
+  width: 20%;
+  background-color: #abf7b1;
+  border-left: 5px solid green;
+}
+
+.incorrect-box {
+  width: 20%;
+  background-color: #ee6b6e;
+  border-left: 5px solid red;
+}
+
+.skipped-box {
+  width: 20%;
+  background-color: #f0e68c;
+  border-left: 5px solid yellow;
+}
+
+#detailed-view {
+  display: none;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 70vh; /* Added to prevent overflowing */
+}
+
+#detailed-view button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#detailed-view button:hover {
+  background-color: #0056b3;
+}
+
+/* Background colors for questions based on their status */
+.correct-question {
+  background-color: #abf7b1; /* Light green */
+  border-left: 5px solid green;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.incorrect-question {
+  background-color: #ee6b6e; /* Light red */
+  border-left: 5px solid red;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.skipped-question {
+  background-color: #f0e68c; /* Light yellow */
+  border-left: 5px solid yellow;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+
+#user-score {
+  color: #000000;
+  margin-bottom: 0.01em;
+  margin-top: 4em;
+  font-size: 30px;
+  background-color: #C6DFC2;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+#next-button {
+  font-size: 1.1em;
+  padding: 0.6em;
+  background-color: black;
+  width: 80%;
+  max-width: 130px;
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  float: right;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#restart {
+  font-size: 1.2em;
+  padding: 0.7em 2em;
+  margin-bottom: 0.01em;
+  margin-top: 2em;
+  background-color: seagreen;
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+/* Base adjustments for better responsiveness */
+@media (max-width: 768px) {
+  h2 {
+      font-size: 2em; /* Increase for better visibility */
+  }
+  input, button {
+      width: 95%;
+      padding: 1em; /* Add more padding for larger tap areas */
+      font-size: 1.1em; /* Slightly larger text */
+  }
+  .category-button {
+      font-size: 1.1em; /* Make buttons larger */
+  }
+  #display-container {
+      width: 100%; /* Use full width */
+      padding: 2em; /* Increase padding */
+  }
+  .options .option {
+      font-size: 1em; /* Slightly increase option size */
+      padding: 1.2em; /* Add more padding to options */
+  }
+  #next-button {
+      width: 100%;
+      max-width: 150px; /* Larger button for easier taps */
+  }
+}
+
+/* For very small devices (e.g., mobile phones) */
+@media (max-width: 480px) {
+  h2 {
+      font-size: 1.8em; /* Increase for better visibility */
+  }
+  input, button {
+      font-size: 1em; /* Adjust font size for readability */
+      padding: 0.8em; /* Keep buttons tappable */
+  }
+  .category-button {
+      font-size: 1em; /* Ensure buttons remain large */
+  }
+  #display-container {
+      width: 100%;
+      padding: 1.5em; /* Increase padding for content spacing */
+  }
+  .options .option {
+      font-size: 0.9em; /* Slightly larger for readability */
+      padding: 1em; /* Ensure options have enough padding */
+  }
+  #next-button {
+      width: 120px; /* Slightly larger button */
+  }
+}
